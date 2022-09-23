@@ -20,4 +20,4 @@ class DiscussionManager(models.Manager):
         return discussion
 class Discussion(models.Model):
     profile_one = models.ForeignKey(Profile , on_delete=models.CASCADE , related_name='dis')
-    profile_two = models.ForeignKey(Profile , on_delete=models.CASCADE)
+    profile_two = models.ForeignKey(Profile , on_delete=models.CASCADE , related_name='disc')
