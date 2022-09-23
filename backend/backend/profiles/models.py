@@ -10,7 +10,7 @@ class ProfileManager(BaseUserManager):
         return user
     def create_superuser(self , email , username = None , password =None) : 
         user = self.create_user(email , username , password)
-        user.is_staff = True
+        user.is_superuser = True
         user.save(using = self._db)
         return user
 class Profile(AbstractBaseUser , PermissionsMixin) : 
@@ -20,6 +20,6 @@ class Profile(AbstractBaseUser , PermissionsMixin) :
     USERNAME_FIELD = 'email'
     objects = ProfileManager()
     is_active = models.BooleanField(default=True)
-    is_staff = models.BooleanField(default=False)
+    is_staff = models.BooleanField(default=True)
     def __str__(self):
         return self.email
